@@ -28,3 +28,7 @@ int main(){
 // endl < '\n' 빠름
 
 // dp는 직접 하나하나 써주자
+
+// #define endl '\n';
+// 시간초과하면 -> 시간을 빠르게 해주면 되네? -> 
+// ios_base::sync_with_stdio(false) cin.tie(0) cout.tie(0)
