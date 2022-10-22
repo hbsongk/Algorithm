@@ -1,38 +1,18 @@
 #include <iostream>
-#include <vector>
 using namespace std;
-
 int n;
-int board[104][104];
+string dp[10004];
 
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    // 아스키 코드는 몇부터 몇까지 있는가? '0'~'9'까지
+    // 'a'-'3'은 어떤 의미를 갖는가? a의 아스키코드 97 - '3'의 아스키코드 51
+    // 'a'-3은 어떤 의미를 갖는가? a의 아스키코드 97 - 3
+    // 'a'+'b'는 어떤 의미를 갖는가? a의 아스키코드 97 + b의 아스키코드 96
 
-    cin >> n;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
-            cin >> board[i][j];
-        }
-    }
-    vector<vector<long long>> dp(n + 1, vector<long long>(n + 1));
-    fill(dp.begin(),dp.end(),vector<long long>(n+1,0));
-    dp[0][0] = 1;
-    for(int row=0;row<n;row++){
-        for(int col=0;col<n;col++){
-            if(board[row][col]==0) continue;
-            if(board[row][col]!=0){
-                int next_row = row + board[row][col];
-                int next_col = col + board[row][col];
+    // 문자끼리의 연산이 나오면? 아스키 코드를 사용하겠구나
+    // String끼리의 연산을 하고 싶으면? 변수 하나에 타입을 지정해줘야한다.
 
-                if(next_row<n) dp[next_row][col] += dp[row][col];
-                if(next_col<n) dp[row][next_col] += dp[row][col];
-            }
-        }
-    }
-
-    cout << dp[n-1][n-1];
-
+    string str = "a";
+    cout << str +"b";
     return 0;
 }
