@@ -42,7 +42,7 @@ pop하면 어디로 가게 될까?
 
 // 단순한 구조에서부터 크게 시작해봐요. 그래서 최종적으로는 반복문까지
 #include <iostream>
-#include <stack>
+#include <vector>
 using namespace std;
 
 int n;
@@ -60,24 +60,26 @@ int main(){
     for(int i=0;i<n;i++){
         cin >> arr[i];
     }
-    stack<int>s;
-    s.push(0);
+    vector<int>v;
+    v.push_back(0);
 
     for(int i=0;i<n;i++){
-        if(arr[i]<s.top()){
+        if(arr[i]<v.back()){
             cout << "NO";
             return 0;
         }
-        if(arr[i]>s.top()){
+        if (arr[i] >v.back())
+        {
             for(int k=j;k<=arr[i];k++){ 
                 operation += '+';
-                s.push(k);
+                v.push_back(k);
             }
-            j = arr[i]+1; 
+            j = arr[i]+1; //? 다음번에 vector에 들어갈 수를 저장해주는 도구
         }
-        if(arr[i]==s.top()){ 
+        if (arr[i] == v.back())
+        {
             operation += '-';
-            s.pop();
+            v.pop_back();
         }
     }
     // s.top이 없어지면?
