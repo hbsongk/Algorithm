@@ -46,6 +46,7 @@ pop하면 어디로 가게 될까?
 using namespace std;
 
 int n;
+int j = 1; // ? 숫자가 어느지점까지 왔는지 알려주는 고정값
 int element;
 int arr[100004];
 string operation;
@@ -60,34 +61,55 @@ int main(){
         cin >> arr[i];
     }
     stack<int>s;
-    s.push(-1);
-    int i=0;
-    int j=1;
-        
-        if(arr[i] > s.top()){
-            for(int k=1;k<s.top();k++){
-                operation += '+';
-                s.push(k);
-            }
-        }
-        if(arr[i] == s.top()){
-            operation += '+';
-            s.push(arr[i]);
+    s.push(0);
 
-            operation += '-';
-            s.pop();
-        }
-        if (arr[i] < s.top()){
+    for(int i=0;i<n;i++){
+        if(arr[i]<s.top()){
             cout << "NO";
             return 0;
         }
-
+        if(arr[i]>s.top()){
+            for(int k=j;k<=arr[i];k++){ 
+                operation += '+';
+                s.push(k);
+            }
+            j = arr[i]+1; 
+        }
+        if(arr[i]==s.top()){ 
+            operation += '-';
+            s.pop();
+        }
+    }
+    // s.top이 없어지면?
     for(char c : operation){
         cout << c << endl;
     }
-
-    return 0;
 }
+
+// 왜 5가 나올까?
+// for문안의 변수값들을 다르게 안해놔서
+// 헷갈릴때? 최대한 고정된 값들을 만들어라
+
+// if문 사이에서 관계 정의하기 어려울때? 예) if if elseif?
+// if문 간의 순서를 바꾸어본다.
+
+
+
+// if문 세개 적절한가?
+/*
+작고, 같을때?
+작고, 클때
+
+크고, 작을때 
+크고, 같을때 O
+
+같고, 작을때
+같고, 클때
+
+*/
+
+// 뭐부터 시작해야할지 모를때 어떻게 해야할까?
+// 고정된 값부터 하나하나 해결해 나가자
 
 // if문과 for문 사이의 관계를 어떻게 명확하게 정의해야하나?
 
