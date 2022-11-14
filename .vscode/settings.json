@@ -1,10 +1,11 @@
 {
-    "files.associations": {
-        "*.tcc": "cpp",
-        "iostream": "cpp",
-        "ostream": "cpp",
-        "functional": "cpp",
-        "fstream": "cpp",
-        "iosfwd": "cpp"
-    }
+  "files.associations": {
+    "*.tcc": "cpp",
+    "iostream": "cpp",
+    "ostream": "cpp",
+    "functional": "cpp",
+    "fstream": "cpp",
+    "iosfwd": "cpp",
+    "map": "cpp"
+  }
 }
